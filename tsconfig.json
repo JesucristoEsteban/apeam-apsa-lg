@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"lib": ["ES2022", "DOM"],
+			"outDir": "./dist",
+			"sourceMap": true,
+			"allowJs": true,
+			"typeRoots": [
+				"node_modules/@types"
+			],
+			"baseUrl": "./",
+			"esModuleInterop": true,
+			"forceConsistentCasingInFileNames": true,
+			"skipLibCheck": true,
+			"strict": true
+	},
+	"include": [
+    "index.ts",
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

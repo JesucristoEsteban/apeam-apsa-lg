@@ -1,0 +1,16 @@
+{
+    "servers": {
+        "rlg": {
+            "protocol": "ws",
+            "host": "192.168.1.31",
+            "port": "5565",
+            "sub": ""
+        },
+        "api": {
+            "protocol": "https",
+            "host": "apsa.apeamac.com",
+            "port": "443",
+            "sub": ""
+        }
+    }
+}
