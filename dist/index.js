@@ -77,7 +77,7 @@ export class LocationService {
         // Get the radio location gateway
         const rlg = await this.configuration.getServer('rlg');
         // const url = `${rlg?.protocol}://${rlg?.host}:${rlg?.port}/`;
-        const url = `ws://192.168.1.31:5565`;
+        const url = `ws://10.27.248.13:5565`;
         // Initialize the client
         this.client = new client();
         // Initialize the socket configuration
