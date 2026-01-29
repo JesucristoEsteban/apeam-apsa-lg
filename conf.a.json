@@ -2,13 +2,13 @@
     "servers": {
         "rlg": {
             "protocol": "ws",
-            "host": "10.27.248.13",
+            "host": "192.168.1.31",
             "port": "5565",
             "sub": ""
         },
         "api": {
             "protocol": "https",
-            "host": "demo.siit-mexico.com",
+            "host": "apsa.apeamac.com",
             "port": "443",
             "sub": ""
         }

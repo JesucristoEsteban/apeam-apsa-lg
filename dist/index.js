@@ -4,6 +4,7 @@ const { client, connection } = pkg;
 // Import modules
 import { readFile } from 'fs';
 import { promisify } from 'util';
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = "0";
 // Export the session class
 export class Configuration {
     // Constructor
@@ -48,7 +49,7 @@ export class Configuration {
     }
     // Get the named server from the config
     async getServer(name) {
-        // Get the config file
+        // Get the config filenbvc
         const config = await this.readConfig();
         // Validate the config exists
         if (config) {
@@ -75,7 +76,8 @@ export class LocationService {
     async start() {
         // Get the radio location gateway
         const rlg = await this.configuration.getServer('rlg');
-        const url = `${rlg?.protocol}://${rlg?.host}:${rlg?.port}/`;
+        // const url = `${rlg?.protocol}://${rlg?.host}:${rlg?.port}/`;
+        const url = `ws://192.168.1.31:5565`;
         // Initialize the client
         this.client = new client();
         // Initialize the socket configuration
@@ -104,10 +106,15 @@ export class LocationService {
                 // Restart the service
                 this.restart();
             });
+            this.connection.on('*', (data) => {
+                console.log(data);
+            });
             // Define the on message method
             this.connection.on('message', async (message) => {
+                console.log(message);
                 // Parse the message
                 const gpsData = this.parse(message);
+                console.log(gpsData);
                 // Validate if it's a locationUpdate message
                 if (gpsData && 'locationUpdate' in gpsData) {
                     // Send the position using axios to a remote server
@@ -170,7 +177,8 @@ export class LocationService {
         // Get the server configuration
         const server = await this.configuration.getServer('api');
         // Define the url
-        const url = `${server?.protocol}://${server?.host}:${server?.port}/public/devices/radio`;
+        const url = `${server?.protocol}://${server?.host}/public/devices/radio`;
+        console.log(url);
         // Log the url and data
         fetch(url, {
             method: 'POST',
